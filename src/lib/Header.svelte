@@ -10,7 +10,7 @@
   export let setShowHome;
   export let handleOnMaximizeHome;
 
-  let activeTab = "todos";
+  let activeTab = "notes";
   let isHomeMaxed = false;
 </script>
 

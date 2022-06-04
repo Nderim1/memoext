@@ -7,12 +7,11 @@
 
   export let setShowHome;
 
-  let activeTab = "todos";
+  let activeTab = "notes";
   let maximizeHome = false;
 
   const handleOnActiveTabChange = (tab) => {
     activeTab = tab;
-    console.log("hello tab", tab);
   };
 
   const handleOnMaximizeHome = (max) => {
