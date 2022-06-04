@@ -1,10 +1,13 @@
 <script>
-  import { beforeUpdate, afterUpdate } from "svelte";
+  import { beforeUpdate, afterUpdate, onMount } from "svelte";
   import FaPlus from "svelte-icons/fa/FaPlus.svelte";
   import FaPencilAlt from "svelte-icons/fa/FaPencilAlt.svelte";
   export let addTodo;
   export let todoToEdit;
   export let editTodo;
+
+  let addTodoInput;
+
   $: todoToAdd = todoToEdit || "";
 
   const prepareAndAddTodo = (todo) => {
@@ -41,12 +44,15 @@
     todoToAdd = "";
     todoToEdit = "";
   };
+
+  onMount(() => addTodoInput.focus());
 </script>
 
 <div class="inline-flex justify-center items-center w-full">
   <input
     class="w-full outline-none rounded-sm bg-blue-50 h-7 p-2"
     bind:value={todoToAdd}
+    bind:this={addTodoInput}
     on:keypress={handleAddTodoEnter}
     maxlength="50"
   />
