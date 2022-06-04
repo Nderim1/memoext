@@ -1,6 +1,4 @@
 <script>
-  import { onMount } from "svelte";
-
   import FaArrowRight from "svelte-icons/fa/FaArrowRight.svelte";
 
   export let notes;
@@ -15,7 +13,9 @@
   >
     <div>
       <span class="text-lg font-medium">{note.title}</span><br />
-      <p class="descriptionPeak text-sm">{note.text || ""}</p>
+      <p class="descriptionPeak text-sm">
+        {note.plainText || ""}
+      </p>
     </div>
     <div class="minWidth w-5 self-center flex ml-2">
       <FaArrowRight />

@@ -59,8 +59,8 @@
     }
   };
 
-  const handleOnNoteChange = ({ title, text }) => {
-    newNoteInfo = { title, text };
+  const handleOnNoteChange = ({ title, text, plainText }) => {
+    newNoteInfo = { title, text, plainText };
     isNoteSaved = false;
   };
 
