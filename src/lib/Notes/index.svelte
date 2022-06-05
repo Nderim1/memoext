@@ -152,15 +152,11 @@
     >
   {/if}
 
-  {#if allNotes.length}
-    <svelte:component
-      this={showComponent(componentToShow)}
-      notes={allNotes}
-      {handleOnNoteClick}
-      note={noteToEdit}
-      {handleOnNoteChange}
-    />
-  {:else}
-    <span class="text-sm">You have no notes at the moment!</span>
-  {/if}
+  <svelte:component
+    this={showComponent(componentToShow)}
+    notes={allNotes}
+    {handleOnNoteClick}
+    note={noteToEdit}
+    {handleOnNoteChange}
+  />
 </div>
