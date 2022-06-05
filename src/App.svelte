@@ -3,7 +3,7 @@
   import FaPencilRuler from "svelte-icons/fa/FaPencilRuler.svelte";
   import Home from "./lib/Home.svelte";
 
-  let showHome = true;
+  let showHome = false;
   const setShowHome = (isShowHome) => {
     showHome = isShowHome;
   };
