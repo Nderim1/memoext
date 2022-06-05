@@ -21,7 +21,7 @@
 
 <div
   transition:slide={{ duration: 200 }}
-  class={`h-80 w-80 fixed bottom-3 right-3 rounded-md p-3 blurThis ${
+  class={`h-80 w-83 fixed bottom-3 right-3 rounded-md p-3 blurThis ${
     maximizeHome ? "maximizeHome" : ""
   }`}
 >

@@ -21,14 +21,13 @@
     ],
   ];
 
-  let titleValue = note.title || "";
+  // let titleValue = note.title || "";
   let textValue = note.text || "";
 
   let noteTitleInput;
 
   onMount(async () => {
     const { default: Quill } = await import("quill");
-    noteTitleInput.focus();
 
     let quill = new Quill(editor, {
       modules: {
@@ -42,13 +41,13 @@
 
     quill.on("text-change", function (delta, oldDelta, source) {
       let contents = quill.getContents();
-      console.log("contents", contents);
+
       if (
         source == "user" &&
         textValue !== JSON.stringify(quill.root.innerHTML)
       ) {
         handleOnNoteChange({
-          title: titleValue,
+          title: contents.ops[0].insert.slice(0, 30) || "",
           text: JSON.stringify(quill.root.innerHTML),
           plainText: quill.getContents().ops[0].insert,
         });
@@ -58,12 +57,12 @@
 </script>
 
 <div class="h-5/6">
-  <input
+  <!-- <input
     bind:this={noteTitleInput}
     bind:value={titleValue}
     on:input={() => handleOnNoteChange({ title: titleValue, text: textValue })}
     class="w-full mb-3 outline-none rounded-sm bg-blue-50 h-7 p-2"
-  />
+  /> -->
   <!-- <Editor /> -->
   <!-- <textarea
     bind:value={textValue}

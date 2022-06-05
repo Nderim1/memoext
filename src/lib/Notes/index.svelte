@@ -37,6 +37,10 @@
   };
 
   const handleOnSaveNoteClick = () => {
+    if (isNoteSaved) return;
+
+    let today = new Date();
+    newNoteInfo.lastSaved = today.toLocaleString();
     if (createMode) {
       if (!newNoteInfo.title) {
         return;
@@ -60,7 +64,11 @@
   };
 
   const handleOnNoteChange = ({ title, text, plainText }) => {
-    newNoteInfo = { title, text, plainText };
+    newNoteInfo = {
+      title,
+      text,
+      plainText,
+    };
     isNoteSaved = false;
   };
 
@@ -88,7 +96,7 @@
   });
 </script>
 
-<div class="h-full ">
+<div class="h-full">
   {#if showBackArrow}
     <div class="inline-flex w-full justify-between items-start">
       <div
@@ -116,6 +124,7 @@
         <FaArrowLeft />
       </div>
       <div class="inline-flex items-center">
+        <span class="text-xs mr-3">{noteToEdit.lastSaved || ""}</span>
         <div
           on:click={() => handleNoteDelete()}
           class="w-4 mr-3 cursor-pointer hover:text-blue-50"
@@ -129,6 +138,7 @@
           </div>
         {/if}
         <button
+          disabled={isNoteSaved}
           class="float-right w-16 rounded-sm border border-blue-50 hover:bg-blue-50"
           title="Save"
           on:click={() => handleOnSaveNoteClick()}>Save</button

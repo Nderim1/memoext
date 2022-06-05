@@ -3,6 +3,15 @@
 
   export let notes;
   export let handleOnNoteClick;
+
+  const sortByLastSavedDate = (a, b) => {
+    let aDate = new Date(a.lastSaved);
+    let bDate = new Date(b.lastSaved);
+
+    return bDate.getTime() - aDate.getTime();
+  };
+
+  notes = notes.sort(sortByLastSavedDate);
 </script>
 
 {#each notes as note, index}
